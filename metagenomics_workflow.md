@@ -43,9 +43,9 @@ for file in $(cat /home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/OWC_me
 
 do 
 echo $ $file
-bbmap.sh ref=Aug_M1_C1_D3_megahit_metabat.266.fa in=$file.fq.gz xmtag=t ambiguous=random outm=$file_Aug_M1_C1_D3_megahit_metabat.266.bam threads=2 -Xmx50g 
+bbmap.sh ref=Aug_M1_C1_D3_megahit_metabat.266.fa in=/home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/$file.fq.gz xmtag=t ambiguous=random outm=$file_Aug_M1_C1_D3_megahit_metabat.266.bam threads=6 -Xmx50g 
 
-samtools sort -@ 2 $file_Aug_M1_C1_D3_megahit_metabat.266.bam > $file_Aug_M1_C1_D3_megahit_metabat.266_sorted.bam
+samtools sort -@ 6 $file_Aug_M1_C1_D3_megahit_metabat.266.bam > $file_Aug_M1_C1_D3_megahit_metabat.266_sorted.bam
 
 rm $file_Aug_M1_C1_D3_megahit_metabat.266.bam
 
