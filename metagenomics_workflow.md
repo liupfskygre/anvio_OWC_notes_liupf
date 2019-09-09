@@ -19,9 +19,20 @@ anvi-gen-contigs-database -f Aug_M1_C1_D3_megahit_metabat.266.fa -n 'Aug_M1_C1_D
 
 
 #skip hmm prifle
+$ anvi-run-hmms -c contigs.db
 
 #
 anvi-display-contigs-stats contigs.db
+
+
+#??? bam files on the way
+for sample in `cat SAMPLE_IDs`; do anvi-init-bam $sample-RAW.bam -o $sample.bam; done
+
+#profile
+$ anvi-profile -c contigs.db --blank-profile -o ./Aug_M1_C1_D3_megahit_metabat.266_blank -S Aug_M1_C1_D3_megahit_266 -W
+
+$ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db
+#why not showing the tnf
 
 ```
 
