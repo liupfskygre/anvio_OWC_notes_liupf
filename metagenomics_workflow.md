@@ -32,8 +32,10 @@ for sample in `cat SAMPLE_IDs`; do anvi-init-bam $sample-RAW.bam -o $sample.bam;
 $ anvi-profile -c contigs.db --blank-profile -o ./Aug_M1_C1_D3_megahit_metabat.266_blank -S Aug_M1_C1_D3_megahit_266 -W
 
 $ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db
-#why not showing the tnf
+#
 
+# I need to have a collection???
+anvi-summarize -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db -o Aug_M1_C1_D3_megahit_metabat_266_refine
 ```
 
 **binnning but with 10 samples coverage files**
