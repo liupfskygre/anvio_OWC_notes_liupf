@@ -16,19 +16,29 @@ cd Aug_M1_C1_D3_megahit_metabat.266
 # Aug_M1_C1_D3_megahit_metabat.266.fa
 #creat
 anvi-gen-contigs-database -f Aug_M1_C1_D3_megahit_metabat.266.fa -n 'Aug_M1_C1_D3_megahit_metabat.266'
+```
 
-
-#skip hmm prifle
+#run hmm prifle
+```
 $ anvi-run-hmms -c contigs.db
+```
 
-#
+#display contigs stats
+```
 anvi-display-contigs-stats contigs.db
+```
 
+**Profiling BAM files**
+#init sorted bam file to generate bai
+```
+ls -1 *sorted.bam > sorted_bam.txt
+$ for sample in $(cat sorted_bam.txt); do anvi-init-bam $sample -o "${sample%.*}"_index.bam; done
 
-#??? bam files on the way
-for sample in `cat SAMPLE_IDs`; do anvi-init-bam $sample-RAW.bam -o $sample.bam; done
+#profile: --blank-profile, in case we do not have bam file but just want to view the genome
+```
 
-#profile: --blank-profile
+#profile
+```
 $ anvi-init-bam Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266_sorted.bam -o Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266_index.bam
 
 $ anvi-profile -c contigs.db -i Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266_index.bam  -o ./Aug_M1_C1_D3_megahit_metabat.266_blank -S Aug_M1_C1_D3_megahit_266 -W --cluster-contigs
