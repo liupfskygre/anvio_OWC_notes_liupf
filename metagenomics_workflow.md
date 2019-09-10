@@ -41,13 +41,48 @@ $ for sample in $(cat sorted_bam.txt); do anvi-init-bam $sample -o "${sample%.*}
 ```
 $ anvi-init-bam Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266_sorted.bam -o Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266_index.bam
 
-$ anvi-profile -c contigs.db -i Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266_index.bam  -o ./Aug_M1_C1_D3_megahit_metabat.266_blank -S Aug_M1_C1_D3_megahit_266 -W --cluster-contigs
+$ 
+for bam in *_index.bam
+do 
+anvi-profile -c contigs.db -i $bam  -o ./"${bam%.*}" -T 2 -W
+done
 
-$ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db 
+#--cluster-contigs
+#-W
+
+```
+
+merge profle.db
+```
+anvi-merge */PROFILE.db -o Aug_M1_C1_D3_megahit_metabat_266_merged -c contigs.db --sample-name Aug_M1_C1_D3_megahit_metabat_266 -W 
+
+#if we do not want to have CONCOCT binning, use --skip-concoct-binning
+```
+
+#activae view
+```
+#without collection
+$ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat_266_merged/PROFILE.db -c contigs.db 
+
+#with concoct collection
+$ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat_266_merged/PROFILE.db -c contigs.db -C CONCOCT
 #
+```
 
+#summarize bins
+```
+anvi-summarize -p Aug_M1_C1_D3_megahit_metabat_266_merged/PROFILE.db -c contigs.db -C CONCOCT
+```
 
+#use the refine 
+```
+anvi-refine -p Aug_M1_C1_D3_megahit_metabat_266_merged/PROFILE.db -c contigs.db -C CONCOCT -b Bin_1
+```
 
+#save after refine and then do re-summary
+
+``` 
+```
 //$ anvi-import-collection binning_results.txt -p SAMPLES-MERGED/PROFILE.db -c contigs.db --source "SOURCE_NAME"
 # find examples here https://github.com/merenlab/anvio/tree/master/anvio/tests/sandbox/example_files_for_external_binning_results
 
@@ -68,9 +103,12 @@ anvi-summarize -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.d
 $ anvi-refine -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db -C Aug_M1_C1_D3_megahit_metabat_collection -b Aug_M1_C1_D3_megahit_metabat_266
 ```
 
-**binnning but with 10 samples coverage files**
-
-
+**do mapping**
+```
+for the binning step, we have the data for binnning but with only 10 samples coverage files
+we need to do mapping with all 16 samples anyway, to first calcualte the relative abundance, then do the refineM of bins
+```
+**one example**
 ```
 #pwd, put all metaG16 names in the txt file
 /home/projects/Wetlands/2018_sampling/OWC_metaG_megahit
@@ -97,5 +135,20 @@ done
 #pkill -u liupf
 ```
 bbmap.sh ref=Aug_M1_C1_D3_megahit_metabat.266.fa in=/home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/Aug_M1_C1_D1.reads.fq.gz xmtag=t ambiguous=random outm=Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266.bam threads=6 -Xmx50g &> Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266.log
+```
+
+**mapping 16 metaG to all dRep mags**
+```
+for file in $(cat /home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/OWC_metaG16_link_list.txt)
+do 
+echo $file
+for MAGs in $(dRep_methanogens_prefix)
+do
+echo ${MAGs}
+bbmap.sh ref=${MAGs}.fa in=/home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/${file}.fq.gz xmtag=t ambiguous=random outm=${MAGs}_${file}.bam threads=6 -Xmx50g &> ${MAGs}_${file}.log
+echo "1"
+samtools sort -@ 6 ${MAGs}_${file}.bam > ${MAGs}_${file}.sorted.bam
+rm ${MAGs}_${file}.bam
+done
 ```
 
