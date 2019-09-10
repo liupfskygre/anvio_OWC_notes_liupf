@@ -37,6 +37,8 @@ $ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c conti
 $ anvi-import-collection binning_results.txt -p SAMPLES-MERGED/PROFILE.db -c contigs.db --source "SOURCE_NAME"
 # find examples here https://github.com/merenlab/anvio/tree/master/anvio/tests/sandbox/example_files_for_external_binning_results
 
+anvi-import-collection -C Aug_M1_C1_D3_megahit_metabat_collection -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db Aug_M1_C1_D3_megahit_metabat_contigs.list
+
 # I need to have a collection???
 anvi-summarize -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db -o Aug_M1_C1_D3_megahit_metabat_266_refine
 ```
