@@ -28,19 +28,34 @@ anvi-display-contigs-stats contigs.db
 #??? bam files on the way
 for sample in `cat SAMPLE_IDs`; do anvi-init-bam $sample-RAW.bam -o $sample.bam; done
 
-#profile
-$ anvi-profile -c contigs.db --blank-profile -o ./Aug_M1_C1_D3_megahit_metabat.266_blank -S Aug_M1_C1_D3_megahit_266 -W
+#profile: --blank-profile
+$ anvi-init-bam Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266_sorted.bam -o Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266_index.bam
 
-$ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db
+$ anvi-profile -c contigs.db -i Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266_index.bam  -o ./Aug_M1_C1_D3_megahit_metabat.266_blank -S Aug_M1_C1_D3_megahit_266 -W --cluster-contigs
+
+$ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db 
 #
 
-$ anvi-import-collection binning_results.txt -p SAMPLES-MERGED/PROFILE.db -c contigs.db --source "SOURCE_NAME"
+
+
+//$ anvi-import-collection binning_results.txt -p SAMPLES-MERGED/PROFILE.db -c contigs.db --source "SOURCE_NAME"
 # find examples here https://github.com/merenlab/anvio/tree/master/anvio/tests/sandbox/example_files_for_external_binning_results
 
-anvi-import-collection -C Aug_M1_C1_D3_megahit_metabat_collection -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db Aug_M1_C1_D3_megahit_metabat_contigs.list
+#import collection from outside
+anvi-import-collection -C Aug_M1_C1_D3_megahit_metabat_collection -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db Aug_M1_C1_D3_megahit_metabat_contigs.list --contigs-mode
+
+#list collections (old ones, anvi-script-get-collection-info)
+ anvi-estimate-genome-completeness -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db --list-collections
+#* Aug_M1_C1_D3_megahit_metabat_collection (1 bins, representing 286 items).
+
+
+#anvi-interactive -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db -C Aug_M1_C1_D3_megahit_metabat_collection
+
 
 # I need to have a collection???
-anvi-summarize -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db -o Aug_M1_C1_D3_megahit_metabat_266_refine
+anvi-summarize -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db -o Aug_M1_C1_D3_megahit_metabat_266_refine -C Aug_M1_C1_D3_megahit_metabat_collection
+
+$ anvi-refine -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db -C Aug_M1_C1_D3_megahit_metabat_collection -b Aug_M1_C1_D3_megahit_metabat_266
 ```
 
 **binnning but with 10 samples coverage files**
