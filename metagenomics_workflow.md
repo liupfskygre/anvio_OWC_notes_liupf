@@ -85,7 +85,7 @@ anvi-refine -p Aug_M1_C1_D3_megahit_metabat_266_merged/PROFILE.db -c contigs.db 
 ```
 //$ anvi-import-collection binning_results.txt -p SAMPLES-MERGED/PROFILE.db -c contigs.db --source "SOURCE_NAME"
 # find examples here https://github.com/merenlab/anvio/tree/master/anvio/tests/sandbox/example_files_for_external_binning_results
-
+```
 #import collection from outside
 anvi-import-collection -C Aug_M1_C1_D3_megahit_metabat_collection -p Aug_M1_C1_D3_megahit_metabat.266_blank/PROFILE.db -c contigs.db Aug_M1_C1_D3_megahit_metabat_contigs.list --contigs-mode
 
@@ -143,8 +143,20 @@ echo "1"
 samtools sort -@ 6 ${file}_O3D3D3_DDIG_megahit.461.bam > ${file}_O3D3D3_DDIG_megahit.461_sorted.bam
 rm ${file}_O3D3D3_DDIG_megahit.461.bam
 done
-```
 
+
+Aug_M1C1D1_idbak60_metabat_bin.117
+
+for file in $(cat /home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/OWC_metaG16_link_list.txt)
+do 
+echo $file
+echo ${file}_Aug_M1C1D1_idbak60_metabat_bin.117.log
+bbmap.sh ref=Aug_M1C1D1_idbak60_metabat_bin.117.fa in=/home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/${file}.fq.gz xmtag=t ambiguous=random outm=${file}_Aug_M1C1D1_idbak60_metabat_bin.117.bam threads=6 -Xmx50g &> ${file}_Aug_M1C1D1_idbak60_metabat_bin.117.log
+echo "1"
+samtools sort -@ 6 ${file}_Aug_M1C1D1_idbak60_metabat_bin.117.bam > ${file}_Aug_M1C1D1_idbak60_metabat_bin.117_sorted.bam
+rm ${file}_Aug_M1C1D1_idbak60_metabat_bin.117.bam
+done
+```
 ```
 #pkill -u liupf
 ```
