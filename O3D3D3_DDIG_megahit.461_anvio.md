@@ -101,7 +101,8 @@ anvi-summarize -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D
 /home/projects/Wetlands/2018_sampling/scripts/run_checkm_t2.sh O3D3D3_DDIG_megahit_461 fa ./ ./O3D3D3_DDIG_megahit_461_anvioRefine
 
 #gtdbtk
-/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk.sh ${prefix}_megahit_metabat
+/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk_t2.sh O3D3D3_DDIG_megahit_461
+Using GTDB-Tk reference data version r89: /opt/gtdbtk/data/release89/
 
 #merge
 python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py ${prefix}_megahit_metabat_checkm_summary.txt gtdbtk_out/${prefix}_megahit_metabat.bac120.summary.tsv gtdbtk_out/${prefix}_megahit_metabat.ar122.summary.tsv >${prefix}_megahit_metabat_checkm_gtdbtk_summary.txt
