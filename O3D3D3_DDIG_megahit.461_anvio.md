@@ -52,29 +52,45 @@ done
 
 merge profle.db
 ```
-anvi-merge */PROFILE.db -o Aug_M1_C1_D3_megahit_metabat_266_merged -c contigs.db --sample-name Aug_M1_C1_D3_megahit_metabat_266 -W 
+anvi-merge */PROFILE.db -o O3D3D3_DDIG_megahit_461_merged -c contigs.db --sample-name O3D3D3_DDIG_megahit_461_merged  
 
 #if we do not want to have CONCOCT binning, use --skip-concoct-binning
 ```
 
+#generate and import collections from outside
+```
+grep '>' O3D3D3_DDIG_megahit.461.fa > O3D3D3_DDIG_megahit.461_head.txt
+sed -i -e 's/>//g' O3D3D3_DDIG_megahit.461_head.txt
+sed -i -e 's/$/\tO3D3D3_DDIG_megahit\.461/g' O3D3D3_DDIG_megahit.461_head.txt
+sed -i -e 's/\./_/g' O3D3D3_DDIG_megahit.461_head.txt
+
+#import collection from outside
+anvi-import-collection -C O3D3D3_DDIG_megahit_461_collection -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db O3D3D3_DDIG_megahit.461_head.txt --contigs-mode
+```
+
+
 #activae view
 ```
 #without collection
-$ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat_266_merged/PROFILE.db -c contigs.db 
+$ anvi-interactive -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db 
 
 #with concoct collection
-$ anvi-interactive -p Aug_M1_C1_D3_megahit_metabat_266_merged/PROFILE.db -c contigs.db -C CONCOCT
+$ anvi-interactive -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C CONCOCT
+anvi-interactive -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D3D3_DDIG_megahit_461_collection
 #
 ```
 
 #summarize bins
 ```
-anvi-summarize -p Aug_M1_C1_D3_megahit_metabat_266_merged/PROFILE.db -c contigs.db -C CONCOCT
+anvi-summarize -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C CONCOCT
+anvi-summarize -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D3D3_DDIG_megahit_461_collection -o Metabat2_summary
+
 ```
 
 #use the refine 
 ```
-anvi-refine -p Aug_M1_C1_D3_megahit_metabat_266_merged/PROFILE.db -c contigs.db -C CONCOCT -b Bin_1
+anvi-refine -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D3D3_DDIG_megahit_461_collection -b O3D3D3_DDIG_megahit_461
+anvi-summarize -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D3D3_DDIG_megahit_461_collection -o Metabat2_summary_refined
 ```
 
 #save after refine and then do re-summary
