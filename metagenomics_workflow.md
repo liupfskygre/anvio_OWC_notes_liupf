@@ -157,7 +157,7 @@ samtools sort -@ 6 ${file}_Aug_M1C1D1_idbak60_metabat_bin.117.bam > ${file}_Aug_
 rm ${file}_Aug_M1C1D1_idbak60_metabat_bin.117.bam
 done
 ```
-```
+
 #pkill -u liupf
 ```
 bbmap.sh ref=Aug_M1_C1_D3_megahit_metabat.266.fa in=/home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/Aug_M1_C1_D1.reads.fq.gz xmtag=t ambiguous=random outm=Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266.bam threads=6 -Xmx50g &> Aug_M1_C1_D1.reads_Aug_M1_C1_D3_megahit_metabat.266.log
