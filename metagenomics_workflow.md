@@ -131,6 +131,20 @@ samtools sort -@ 6 ${file}_Aug_M1_C1_D3_megahit_metabat.266.bam > ${file}_Aug_M1
 rm ${file}_Aug_M1_C1_D3_megahit_metabat.266.bam
 done
 
+#O3C3D3_DDIG_megahit.461 -->O3D3D3_DDIG_megahit.461
+
+
+for file in $(cat /home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/OWC_metaG16_link_list.txt)
+do 
+echo $file
+echo ${file}_O3D3D3_DDIG_megahit.461.log
+bbmap.sh ref=O3D3D3_DDIG_megahit.461.fa in=/home/projects/Wetlands/2018_sampling/OWC_metaG_megahit/${file}.fq.gz xmtag=t ambiguous=random outm=${file}_O3D3D3_DDIG_megahit.461.bam threads=6 -Xmx50g &> ${file}_O3D3D3_DDIG_megahit.461.log
+echo "1"
+samtools sort -@ 6 ${file}_O3D3D3_DDIG_megahit.461.bam > ${file}_O3D3D3_DDIG_megahit.461_sorted.bam
+rm ${file}_O3D3D3_DDIG_megahit.461.bam
+done
+```
+
 ```
 #pkill -u liupf
 ```
