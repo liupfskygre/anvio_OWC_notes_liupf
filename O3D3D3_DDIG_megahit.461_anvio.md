@@ -91,6 +91,18 @@ anvi-summarize -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D
 ```
 anvi-refine -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D3D3_DDIG_megahit_461_collection -b O3D3D3_DDIG_megahit_461
 anvi-summarize -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D3D3_DDIG_megahit_461_collection -o Metabat2_summary_refined
+
+#in the bin-to-bin folder will find the new 
 ```
 
 #save after refine and then do re-summary
+#checkm
+```
+/home/projects/Wetlands/2018_sampling/scripts/run_checkm_t2.sh O3D3D3_DDIG_megahit_461 fa ./ ./O3D3D3_DDIG_megahit_461_anvioRefine
+
+#gtdbtk
+/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk.sh ${prefix}_megahit_metabat
+
+#merge
+python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py ${prefix}_megahit_metabat_checkm_summary.txt gtdbtk_out/${prefix}_megahit_metabat.bac120.summary.tsv gtdbtk_out/${prefix}_megahit_metabat.ar122.summary.tsv >${prefix}_megahit_metabat_checkm_gtdbtk_summary.txt
+```
