@@ -103,18 +103,23 @@ https://data.ace.uq.edu.au/public/misc_downloads/refinem/
 #download the database to server, use refine
 
 ```
+/home/liupf/database_downloaded/
 #building db
 tar -xzf gtdb_r86_protein_db.2018-09-25.tar.gz
 screen -S builddb
 > diamond makedb -p 2 -d gtdb_r86_protein_db.2018-09-25.faa --in gtdb_r86_protein_db.2018-09-25.faa
 
 #this is for blast db, not used
->makeblastdb -dbtype prot -in gtdb_r86_protein_db.2018-09-25.faa -out gtdb_r86_protein_db.2018-09-25
+#makeblastdb -dbtype prot -in gtdb_r86_protein_db.2018-09-25.faa -out gtdb_r86_protein_db.2018-09-25
 
+#analysis data
+cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/OWC_Methanogens_MAGs248_db28June2019/dRep_methanogens_28June2019/dereplicated_genomes
 
->refinem call_genes -c 2 <bin_dir> <gene_output_dir>
+mkdir O3D3D3_DDIG_megahit.461_gene
+>refinem call_genes -c 2 O3D3D3_DDIG_megahit.461_gene O3D3D3_DDIG_megahit.461_gene_output -x fa
 
->refinem taxon_profile -c 2 <gene_output_dir> <stats_output_dir>/scaffold_stats.tsv <reference_db> <reference_taxonomy> <taxon_profile_output_dir>
+screen -S refineM
+>refinem taxon_profile -c 1 O3D3D3_DDIG_megahit.461_gene_output O3D3D3_DDIG_megahit.461_stats_output/scaffold_stats.tsv /home/liupf/database_downloaded/gtdb_r86_protein_db.2018-09-25.faa.dmnd /home/liupf/database_downloaded/gtdb_r86_taxonomy.2018-09-25.tsv O3D3D3_DDIG_megahit.461_taxon_profile
 
 >refinem filter_bins <bin_dir> taxon_filter.tsv <filtered_output_dir>
 
