@@ -121,6 +121,23 @@ mkdir O3D3D3_DDIG_megahit.461_gene
 screen -S refineM
 >refinem taxon_profile -c 1 O3D3D3_DDIG_megahit.461_gene_output O3D3D3_DDIG_megahit.461_stats_output/scaffold_stats.tsv /home/liupf/database_downloaded/gtdb_r86_protein_db.2018-09-25.faa.dmnd /home/liupf/database_downloaded/gtdb_r86_taxonomy.2018-09-25.tsv O3D3D3_DDIG_megahit.461_taxon_profile
 
->refinem filter_bins <bin_dir> taxon_filter.tsv <filtered_output_dir>
+refinem taxon_filter -c 2 O3D3D3_DDIG_megahit.461_taxon_profile ./O3D3D3_DDIG_megahit.461_taxon_profile/taxon_filter.tsv
 
+cd O3D3D3_DDIG_megahit.461_gene
+>refinem filter_bins -x fa ./ ../O3D3D3_DDIG_megahit.461_taxon_profile/taxon_filter.tsv filtered_output_dir
+##after checkM, the now scaffolds were removed
+
+##check the bin report , do manually remove of bins from MAGs based on 'bacteria'
+$ sed -i 's/\(k121_[0-9].*\)_[0-9]*$/\1/g' O3D3D3_DDIG_megahit.461_genes.gene_bacteria_f1.tsv>O3D3D3_DDIG_megahit.461_genes.gene_bacteria_f1.txt
+
+$ cat O3D3D3_DDIG_megahit.461_genes.gene_bacteria_f1.tsv|sort|uniq> O3D3D3_DDIG_megahit.461_genes.gene_bacteria_f1.txt
+
+$ cp ../O3D3D3_DDIG_megahit.461_taxon_profile/bin_reports/O3D3D3_DDIG_megahit.461_genes.gene_bacteria_f1.txt ./
+
+pullseq -i O3D3D3_DDIG_megahit.461.fa -e -n O3D3D3_DDIG_megahit.461_genes.gene_bacteria_f1.txt >O3D3D3_DDIG_megahit.461_genes.tax_man.fa 
+
+#checkm aganin on the taxon divergent remove bins
+/home/projects/Wetlands/2018_sampling/scripts/run_checkm_t2.sh O3D3D3_DDIG_megahit_461 fa ./ ./O3D3D3_DDIG_megahit_461_refineM
+
+48.19           19.63 , after doing this, the quality is not improved 
 ```
