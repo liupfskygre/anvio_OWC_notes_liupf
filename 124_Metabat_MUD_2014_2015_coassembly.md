@@ -9,6 +9,14 @@ cd /Users/pengfeiliu/A_Wrighton_lab/Wetland_project/OWC_metaG_2014_2018/OWC_wetl
 
 conda activate anvio5
 #creat
+sed -i -e 's/124_Metabat_MUD_2014_2015_coassembly\.fascaffold/Metabat_MUD_2014_2015_coassembly124_fascaffold/g' 124_Metabat_MUD_2014_2015_coassembly.fa
+
+#fix the header of bam file
+#http://seqanswers.com/forums/showthread.php?t=22504
+for sample in $(cat sorted_bam.txt); do samtools view -h $sample|sed -e 's/124_Metabat_MUD_2014_2015_coassembly\.fascaffold/Metabat_MUD_2014_2015_coassembly124_fascaffold/g'|samtools view -bS - > "${sample%.*}"_fixed.bam; done
+#this work to fix the header
+Metabat_MUD_2014_2015_coassembly124_fascaffold_881
+
 anvi-gen-contigs-database -f 124_Metabat_MUD_2014_2015_coassembly.fa -n '124_Metabat_MUD_2014_2015_coassembly'
 
 #run hmm
@@ -38,9 +46,21 @@ done
 #
 #merge profle.db
 
-anvi-merge */PROFILE.db -o 124_Metabat_MUD_2014_2015_coassembly_merged -c contigs.db --sample-name 124_Metabat_MUD_2014_2015_coassembly_merged  
+anvi-merge */PROFILE.db -o 124_Metabat_MUD_2014_2015_coassembly_merged -c contigs.db --sample-name Metabat_MUD_2014_2015_coassembly124_merged  
 
 #if we do not want to have CONCOCT binning, use --skip-concoct-binning
+#
+#generate and import collections from outside
+
+grep '>' 124_Metabat_MUD_2014_2015_coassembly.fa > 124_Metabat_MUD_2014_2015_coassembly.txt
+sed -i -e 's/>//g' 124_Metabat_MUD_2014_2015_coassembly.txt
+sed -i -e 's/$/\t124_Metabat_MUD_2014_2015_coassembly/g' 124_Metabat_MUD_2014_2015_coassembly.txt
+#sed -i -e 's/\./_/g' 124_Metabat_MUD_2014_2015_coassembly.txt
+
+#import collection from outside
+anvi-import-collection -C Metabat_MUD_2014_2015_coassembly124_collection -p 124_Metabat_MUD_2014_2015_coassembly_merged/PROFILE.db -c contigs.db 124_Metabat_MUD_2014_2015_coassembly.txt --contigs-mode
+
+#bin names started with number cause problems
 
 #
 #after anvio refine, check on zenith
