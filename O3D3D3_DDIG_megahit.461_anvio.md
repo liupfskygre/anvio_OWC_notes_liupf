@@ -97,7 +97,12 @@ anvi-summarize -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D
 
 #save after refine and then do re-summary
 #checkm
+
+
 ```
+# cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/Methanogens_bins_refine_anvio
+
+
 /home/projects/Wetlands/2018_sampling/scripts/run_checkm_t2.sh O3D3D3_DDIG_megahit_461 fa ./ ./O3D3D3_DDIG_megahit_461_anvioRefine
 
 #gtdbtk
