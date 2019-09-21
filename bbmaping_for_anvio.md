@@ -159,10 +159,118 @@ OWC_May_M1_C1_D6.fastq.gz
 cd /scratch/summit/liupf@colostate.edu/Methanogens_decon_MAGs/MAGs_needs_refined
 ```
 
-#O3D3_metabatSS.87
+#1, O3D3_metabatSS.87
 ```
 sbatch run_bbmap_summit_MetaG16_Mg24.sh metaG16_raw_reads.txt O3D3_metabatSS.87 O3D3_metabatSS.87.fa 
 # Submitted batch job 3188957
 #14:24 
+```
 
+#2 Aug_M1_C1_D3_megahit_metabat.266
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt Aug_M1_C1_D3_megahit_metabat.266 Aug_M1_C1_D3_megahit_metabat.266.fa 
+squeue|grep liupf
+```
+
+#3, O3D3D3_DDIG_megahit.4
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt O3D3D3_DDIG_megahit.4 O3D3D3_DDIG_megahit.4.fa 
+```
+
+#4,O3C3D3_DDIG_MN.967
+
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt O3C3D3_DDIG_MN.967 O3C3D3_DDIG_MN.967.fa 
+ 
+```
+
+#5, O3C3D3_DDIG_MN.569
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt O3C3D3_DDIG_MN.569 O3C3D3_DDIG_MN.569.fa 
+```
+6, OWC_substrative_co_megahit_Deep_metabat.815
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt OWC_substrative_co_megahit_Deep_metabat.815 OWC_substrative_co_megahit_Deep_metabat.815.fa
+```
+7, OWC_subtractive_megahit_Surface_metabat.783
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt OWC_subtractive_megahit_Surface_metabat.783 OWC_subtractive_megahit_Surface_metabat.783.fa
+
+```
+8, Aug_OW2_C1_D5_megahit_metabat.368
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt Aug_OW2_C1_D5_megahit_metabat.368 Aug_OW2_C1_D5_megahit_metabat.368.fa
+
+```
+9, O3C3D4_idba_metabatSS.159
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt O3C3D4_idba_metabatSS.159 O3C3D4_idba_metabatSS.159.fa
+
+```
+10,OWC_substrative_co_megahit_Deep_metabat.1305
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt OWC_substrative_co_megahit_Deep_metabat.1305 OWC_substrative_co_megahit_Deep_metabat.1305.fa
+
+```
+11, May_M1_C1_D1_megahit_metabat.122
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt May_M1_C1_D1_megahit_metabat.122 May_M1_C1_D1_megahit_metabat.122.fa
+```
+12, O3C3D4_idba_metabatSS.114
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt O3C3D4_idba_metabatSS.114 O3C3D4_idba_metabatSS.114.fa
+
+```
+13, O3D3_metabatSS.114
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt O3D3_metabatSS.114 O3D3_metabatSS.114.fa
+
+```
+14, Aug_N3_C1_D1_megahit_metabat.230
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt Aug_N3_C1_D1_megahit_metabat.230 Aug_N3_C1_D1_megahit_metabat.230.fa
+```
+15, M3C5D1_DDIG_MN.345
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt M3C5D1_DDIG_MN.345 M3C5D1_DDIG_MN.345.fa
+#Submitted batch job 3189038 wrong
+```
+16, O3C3D4_DDIG_MN.831
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt O3C3D4_DDIG_MN.831 O3C3D4_DDIG_MN.831.fa
+```
+17, O3C3D3_DDIG_MN.808
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt O3C3D3_DDIG_MN.808 O3C3D3_DDIG_MN.808.fa
+
+```
+18, Aug_M1_C1_D3_megahit_metabat.302
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt Aug_M1_C1_D3_megahit_metabat.302 Aug_M1_C1_D3_megahit_metabat.302.fa
+```
+19, Aug_M1C1D1_idbak60_metabat_bin.117
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt Aug_M1C1D1_idbak60_metabat_bin.117 Aug_M1C1D1_idbak60_metabat_bin.117.fa
+```
+20, Aug_M1_C1_D2_megahit_metabat.5
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt Aug_M1_C1_D2_megahit_metabat.5 Aug_M1_C1_D2_megahit_metabat.5.fa
+```
+21, M3C4D3_v1_idba.136
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt M3C4D3_v1_idba.136 M3C4D3_v1_idba.136.fa
+```
+22, O3D3D3_DDIG_megahit.461
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt O3D3D3_DDIG_megahit.461 O3D3D3_DDIG_megahit.461.fa
+```
+PLANT_2015_08_Metabat_30.fa
+```
+sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt PLANT_2015_08_Metabat_30 PLANT_2015_08_Metabat_30.fa
+
+```
+
+124_Metabat_MUD_2014_2015_coassembly
+```
+finished on zenith
 ```
