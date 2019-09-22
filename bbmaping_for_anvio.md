@@ -297,3 +297,69 @@ done
 cd ..
 done
 ```
+
+#anvio on MAC
+```
+cd /Users/pengfeiliu/A_Wrighton_lab/Wetland_project/OWC_metaG_2014_2018/OWC_wetland_methanogens_database/anvio_refine_MAGs
+
+for MAGs in $(cat bbmap_file.list)
+do 
+echo ${MAGs}
+cd $MAGs
+for file in *.fa
+do
+echo "${file%.*}"
+#creat
+anvi-gen-contigs-database -f ${file} -n 'Methanogens_anvio'
+anvi-run-hmms -c contigs.db
+done
+cd ..
+done
+```
+Aug_M1C1D1_idbak60_metabat_bin.117_bbmap_out
+Aug_M1_C1_D2_megahit_metabat.5_bbmap_out
+Aug_M1_C1_D3_megahit_metabat.266_bbmap_out
+Aug_M1_C1_D3_megahit_metabat.302_bbmap_out
+Aug_N3_C1_D1_megahit_metabat.230_bbmap_out
+Aug_OW2_C1_D5_megahit_metabat.368_bbmap_out
+M3C4D3_v1_idba.136_bbmap_out
+M3C5D1_DDIG_MN.345_bbmap_out
+May_M1_C1_D1_megahit_metabat.122_bbmap_out
+O3C3D3_DDIG_MN.569_bbmap_out
+O3C3D3_DDIG_MN.808_bbmap_out
+O3C3D3_DDIG_MN.967_bbmap_out
+O3C3D4_DDIG_MN.831_bbmap_out
+O3C3D4_idba_metabatSS.114_bbmap_out
+O3C3D4_idba_metabatSS.159_bbmap_out
+O3D3D3_DDIG_megahit.461_bbmap_out
+O3D3D3_DDIG_megahit.4_bbmap_out
+O3D3_metabatSS.114_bbmap_out
+O3D3_metabatSS.87_bbmap_out
+OWC_substrative_co_megahit_Deep_metabat.1305_bbmap_out
+OWC_substrative_co_megahit_Deep_metabat.815_bbmap_out
+OWC_subtractive_megahit_Surface_metabat.783_bbmap_out
+PLANT_2015_08_Metabat_30_bbmap_out
+
+#index bam file
+```
+for MAGs in $(cat bbmap_file.list)
+do 
+echo ${MAGs}
+cd $MAGs
+ls -1 *.bam > sorted_bam.txt
+for sample in $(cat sorted_bam.txt)
+do 
+anvi-init-bam $sample -o "${sample%.*}"_index.bam
+done
+cd ..
+done
+
+```
+
+profile
+```
+for bam in *sorted_fixed_index.bam
+do 
+anvi-profile -c contigs.db -i $bam  -o ./"${bam%.*}" -T 2 
+done
+```
