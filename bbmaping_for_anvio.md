@@ -274,3 +274,26 @@ sbatch run_bbmap_summit_MetaG16_Mg24_2.sh metaG16_raw_reads.txt PLANT_2015_08_Me
 ```
 finished on zenith
 ```
+
+```
+cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/OWC_Methanogens_MAGs248_db28June2019/dRep_methanogens_28June2019/dereplicated_genomes
+
+screen -S samtools
+
+/home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/Methanogens_bins_refine_anvio
+
+for MAGs in $(cat bbmap_file.list)
+do 
+echo ${MAGs}
+cd $MAGs
+for file in *.sam
+do
+echo "${file%.*}"
+samtools view -@ 6 -bS $file > "${file%.*}".bam
+samtools sort -@ 6 "${file%.*}".bam > "${file%.*}".sorted.bam
+rm $file
+rm "${file%.*}".bam
+done
+cd ..
+done
+```
