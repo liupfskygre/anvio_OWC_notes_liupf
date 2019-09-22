@@ -389,3 +389,8 @@ done
 cd ..
 done
 ```
+#viz interactive
+```
+anvi-interactive -p Methanogens_merged_profile/PROFILE.db -c contigs.db 
+
+```
