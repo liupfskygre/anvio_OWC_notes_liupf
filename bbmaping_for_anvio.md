@@ -358,6 +358,19 @@ done
 
 profile
 ```
+for MAGs in $(cat bbmap_file.list)
+do 
+echo ${MAGs}
+cd $MAGs
+for bam in *sorted_index.bam
+do 
+anvi-profile -c contigs.db -i $bam  -o ./"${bam%.*}" -T 2 
+anvi-merge */PROFILE.db -o Methanogens_merged_profile -c contigs.db --sample-name Methanogens_merged_profile
+done
+cd ..
+done
+
+
 for bam in *sorted_fixed_index.bam
 do 
 anvi-profile -c contigs.db -i $bam  -o ./"${bam%.*}" -T 2 
