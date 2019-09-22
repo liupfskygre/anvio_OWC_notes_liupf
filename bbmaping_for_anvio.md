@@ -358,8 +358,8 @@ done
 
 profile
 ```
-#for MAGs in $(cat bbmap_file.list) #change the list accordingly
-for MAGs in M3C5D1_DDIG_MN.345_bbmap_out
+#for MAGs in M3C5D1_DDIG_MN.345_bbmap_out
+for MAGs in $(cat bbmap_file.list) #change the list accordingly
 do 
 echo ${MAGs}
 cd $MAGs
@@ -371,4 +371,21 @@ anvi-merge */PROFILE.db -o Methanogens_merged_profile -c contigs.db --sample-nam
 cd ..
 done
 
+```
+
+#import collection
+```
+for MAGs in $(cat bbmap_file_full.list) #23
+do 
+echo ${MAGs}
+cd $MAGs
+for in *.fa
+do
+grep '>' O3D3D3_DDIG_megahit.461.fa > O3D3D3_DDIG_megahit.461_head.txt
+sed -i -e 's/>//g' O3D3D3_DDIG_megahit.461_head.txt
+sed -i -e 's/$/\tO3D3D3_DDIG_megahit\.461/g' O3D3D3_DDIG_megahit.461_head.txt
+sed -i -e 's/\./_/g' O3D3D3_DDIG_megahit.461_head.txt
+done
+cd ..
+done
 ```
