@@ -316,29 +316,7 @@ done
 cd ..
 done
 ```
-Aug_M1C1D1_idbak60_metabat_bin.117_bbmap_out
-Aug_M1_C1_D2_megahit_metabat.5_bbmap_out
-Aug_M1_C1_D3_megahit_metabat.266_bbmap_out
-Aug_M1_C1_D3_megahit_metabat.302_bbmap_out
-Aug_N3_C1_D1_megahit_metabat.230_bbmap_out
-Aug_OW2_C1_D5_megahit_metabat.368_bbmap_out
-M3C4D3_v1_idba.136_bbmap_out
-M3C5D1_DDIG_MN.345_bbmap_out
-May_M1_C1_D1_megahit_metabat.122_bbmap_out
-O3C3D3_DDIG_MN.569_bbmap_out
-O3C3D3_DDIG_MN.808_bbmap_out
-O3C3D3_DDIG_MN.967_bbmap_out
-O3C3D4_DDIG_MN.831_bbmap_out
-O3C3D4_idba_metabatSS.114_bbmap_out
-O3C3D4_idba_metabatSS.159_bbmap_out
-O3D3D3_DDIG_megahit.461_bbmap_out
-O3D3D3_DDIG_megahit.4_bbmap_out
-O3D3_metabatSS.114_bbmap_out
-O3D3_metabatSS.87_bbmap_out
-OWC_substrative_co_megahit_Deep_metabat.1305_bbmap_out
-OWC_substrative_co_megahit_Deep_metabat.815_bbmap_out
-OWC_subtractive_megahit_Surface_metabat.783_bbmap_out
-PLANT_2015_08_Metabat_30_bbmap_out
+
 
 #index bam file
 ```
@@ -373,24 +351,86 @@ done
 
 ```
 
+#creat collection from bins 
+```
+for MAGs in $(cat bbmap_file_full.list) #23
+do 
+echo ${MAGs}
+cd $MAGs
+for file in *.fa
+do
+grep '>' ${file} > seq_header.txt
+sed -i -e 's/>//g' seq_header.txt
+sed -i -e 's/$/\tMAGs_from_megahit/g' seq_header.txt
+done
+cd ..
+done
+```
+
 #import collection
 ```
 for MAGs in $(cat bbmap_file_full.list) #23
 do 
 echo ${MAGs}
 cd $MAGs
-for in *.fa
-do
-grep '>' O3D3D3_DDIG_megahit.461.fa > O3D3D3_DDIG_megahit.461_head.txt
-sed -i -e 's/>//g' O3D3D3_DDIG_megahit.461_head.txt
-sed -i -e 's/$/\tO3D3D3_DDIG_megahit\.461/g' O3D3D3_DDIG_megahit.461_head.txt
-sed -i -e 's/\./_/g' O3D3D3_DDIG_megahit.461_head.txt
-done
+anvi-import-collection -C Meta_collection -p Methanogens_merged_profile/PROFILE.db -c contigs.db seq_header.txt --contigs-mode
 cd ..
 done
 ```
+
+#summarize
+```
+for MAGs in $(cat bbmap_file_full.list) #23
+do 
+echo ${MAGs}
+cd $MAGs
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+cd ..
+done
+
+```
+
 #viz interactive
 ```
 anvi-interactive -p Methanogens_merged_profile/PROFILE.db -c contigs.db 
 
 ```
+
+### refine each genomes
+```
+cd to each bbmap
+anvi-refine Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+```
+
+#Aug_M1C1D1_idbak60_metabat_bin.117_bbmap_out
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd Aug_M1C1D1_idbak60_metabat_bin.117_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary 
+
+```
+Aug_M1_C1_D2_megahit_metabat.5_bbmap_out
+Aug_M1_C1_D3_megahit_metabat.266_bbmap_out
+Aug_M1_C1_D3_megahit_metabat.302_bbmap_out
+Aug_N3_C1_D1_megahit_metabat.230_bbmap_out
+Aug_OW2_C1_D5_megahit_metabat.368_bbmap_out
+M3C4D3_v1_idba.136_bbmap_out
+M3C5D1_DDIG_MN.345_bbmap_out
+May_M1_C1_D1_megahit_metabat.122_bbmap_out
+O3C3D3_DDIG_MN.569_bbmap_out
+O3C3D3_DDIG_MN.808_bbmap_out
+O3C3D3_DDIG_MN.967_bbmap_out
+O3C3D4_DDIG_MN.831_bbmap_out
+O3C3D4_idba_metabatSS.114_bbmap_out
+O3C3D4_idba_metabatSS.159_bbmap_out
+O3D3D3_DDIG_megahit.461_bbmap_out
+O3D3D3_DDIG_megahit.4_bbmap_out
+O3D3_metabatSS.114_bbmap_out
+O3D3_metabatSS.87_bbmap_out
+OWC_substrative_co_megahit_Deep_metabat.1305_bbmap_out
+OWC_substrative_co_megahit_Deep_metabat.815_bbmap_out
+OWC_subtractive_megahit_Surface_metabat.783_bbmap_out
+PLANT_2015_08_Metabat_30_bbmap_out
