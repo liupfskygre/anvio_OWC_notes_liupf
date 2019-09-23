@@ -411,9 +411,29 @@ anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_colle
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary 
 
+Aug_M1C1D1_idbak60_metabat_Anvio.117
 ```
-Aug_M1_C1_D2_megahit_metabat.5_bbmap_out
+#Aug_M1_C1_D2_megahit_metabat.5_bbmap_out???
+
+```
+cd Aug_M1_C1_D2_megahit_metabat.5_bbmap_out
+
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary 
+
+```
 Aug_M1_C1_D3_megahit_metabat.266_bbmap_out
+
+```
+cd Aug_M1_C1_D3_megahit_metabat.266_bbmap_out
+
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary 
+
+```
+
 Aug_M1_C1_D3_megahit_metabat.302_bbmap_out
 Aug_N3_C1_D1_megahit_metabat.230_bbmap_out
 Aug_OW2_C1_D5_megahit_metabat.368_bbmap_out
