@@ -431,7 +431,7 @@ cd Aug_M1_C1_D3_megahit_metabat.266_bbmap_out
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary 
-
+Aug_M1_C1_D3_megahit_metabat_Anvio.266.fa
 ```
 
 Aug_M1_C1_D3_megahit_metabat.302_bbmap_out
