@@ -298,3 +298,117 @@ cd ..
 done
 
 ```
+
+#anvio on MAC, creat db
+```
+cd /Users/pengfeiliu/A_Wrighton_lab/Wetland_project/OWC_metaG_2014_2018/OWC_wetland_methanogens_database/anvio_refine_MAGs
+
+for MAGs in $(cat bbmap_file.list)
+do 
+echo ${MAGs}
+cd $MAGs
+for file in *.fa
+do
+echo "${file%.*}"
+#creat
+anvi-gen-contigs-database -f ${file} -n 'Methanogens_anvio'
+anvi-run-hmms -c contigs.db
+done
+cd ..
+done
+```
+
+#index bam file
+```
+for MAGs in $(cat bbmap_file.list)
+do 
+echo ${MAGs}
+cd $MAGs
+ls -1 *.bam > sorted_bam.txt
+for sample in $(cat sorted_bam.txt)
+do 
+anvi-init-bam $sample -o "${sample%.*}"_index.bam
+done
+cd ..
+done
+```
+
+profile
+```
+#for MAGs in M3C5D1_DDIG_MN.345_bbmap_out
+for MAGs in $(cat bbmap_file.list) #change the list accordingly
+do 
+echo ${MAGs}
+cd $MAGs
+for bam in *sorted_index.bam
+do 
+anvi-profile -c contigs.db -i $bam  -o ./"${bam%.*}" -T 2 
+done
+anvi-merge */PROFILE.db -o Methanogens_merged_profile -c contigs.db --sample-name Methanogens_merged_profile
+cd ..
+done
+
+```
+
+#creat collection from bins 
+```
+for MAGs in $(cat bbmap_file_full.list) #23
+do 
+echo ${MAGs}
+cd $MAGs
+for file in *.fa
+do
+grep '>' ${file} > seq_header.txt
+sed -i -e 's/>//g' seq_header.txt
+sed -i -e 's/$/\tMAGs_from_megahit/g' seq_header.txt
+done
+cd ..
+done
+```
+
+#import collection
+```
+for MAGs in $(cat bbmap_file_full.list) #23
+do 
+echo ${MAGs}
+cd $MAGs
+anvi-import-collection -C Meta_collection -p Methanogens_merged_profile/PROFILE.db -c contigs.db seq_header.txt --contigs-mode
+cd ..
+done
+```
+
+#summarize
+```
+for MAGs in $(cat bbmap_file_full.list) #23
+do 
+echo ${MAGs}
+cd $MAGs
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+cd ..
+done
+
+```
+
+#viz interactive
+```
+anvi-interactive -p Methanogens_merged_profile/PROFILE.db -c contigs.db 
+
+```
+
+### refine each genomes
+```
+cd to each bbmap
+anvi-refine Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+```
+
+#xx_bbmap_out
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd Aug_M1C1D1_idbak60_metabat_bin.117_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary 
+
+xx.117
+```
