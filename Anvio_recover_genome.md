@@ -273,3 +273,28 @@ Submitted batch job 3202138
 >36_ESOM_MUD_2014_11.fascaffold_1
 ==> MUD_2014_11_ESOM_35.fa <==
 >35_ESOM_MUD_2014_11.fascaffold_97
+
+
+```
+cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/OWC_Methanogens_MAGs248_db28June2019/dRep_methanogens_28June2019/dereplicated_genomes
+
+screen -r samtools
+
+cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/Methangoens_db_Cp50Ctl25_Anvio
+
+for MAGs in $(cat bbmap_file.list)
+do 
+echo ${MAGs}
+cd $MAGs
+for file in *.sam
+do
+echo "${file%.*}"
+samtools view -@ 6 -bS $file > "${file%.*}".bam
+samtools sort -@ 6 "${file%.*}".bam > "${file%.*}".sorted.bam
+rm $file
+rm "${file%.*}".bam
+done
+cd ..
+done
+
+```
