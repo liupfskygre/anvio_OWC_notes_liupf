@@ -1,3 +1,5 @@
+# Making anvi'o use your own HMM collection
+
 ## export bac and arc marker genes from gtdbtk data
 
 ##
@@ -45,3 +47,39 @@ You can use anvi-export-collection to export collection information and import i
 You can use anvi-show-collections-and-bins to see all available collections and bins in an anvi’o profile or pan database.
 
 You can use anvi-script-get-collection-info to see completion and redundancy estimates for all bins in a given anvi’o collection.
+
+#http://merenlab.org/2016/05/21/archaeal-single-copy-genes/
+```
+cd /Users/pengfeiliu/anvio_dataset/gtdbtk_marker/Bac_120_marker
+cd 
+#cat all hmm
+cat *.hmm> genes_profile
+
+#gz the concatenate files
+gzip genes_profile
+mv genes_profile.gz genes.hmm.gz
+
+#add another five files to the marker gene db
+touch genes.txt	
+touch kind.txt	
+touch reference.txt	
+touch target.txt
+
+#https://github.com/merenlab/anvio/issues/498#issuecomment-362115921
+touch noise_cutoff_terms.txt
+#-E 1e-12
+
+#defaultValues.py - store default values used in many places in CheckM; -E 1e-10
+
+#Archaeal
+cd /Users/pengfeiliu/anvio_dataset/gtdbtk_marker/Arc_122_marker
+
+#
+
+#
+```
+http://merenlab.org/2016/04/17/predicting-CPR-Genomes/
+
+```
+
+```
