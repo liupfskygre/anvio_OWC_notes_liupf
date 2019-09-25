@@ -352,7 +352,7 @@ done
 
 #creat collection from bins 
 ```
-for MAGs in $(cat bbmap_file_full.list) #23
+for MAGs in $(cat bbmap_file.list) #25
 do 
 echo ${MAGs}
 cd $MAGs
@@ -368,7 +368,7 @@ done
 
 #import collection
 ```
-for MAGs in $(cat bbmap_file_full.list) #23
+for MAGs in $(cat bbmap_file.list) #25
 do 
 echo ${MAGs}
 cd $MAGs
