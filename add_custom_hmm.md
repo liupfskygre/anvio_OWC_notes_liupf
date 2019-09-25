@@ -3,6 +3,22 @@
 ## export bac and arc marker genes from gtdbtk data
 
 ##
+
+**issues when hmmpress cat hmm profile
+```
+I found the answer elsewhere. To solve this issue you need to convert the different versions of the individual hmms to the most recent version using hmmconvert.
+
+hmmconvert <old_hmm>  >  <new_hmm_name.hmm>
+Then you can concatenate and press the database.
+
+for i in `ls *hmm | sed 's/.hmm//g'`; do hmmconvert ${i}.hmm > ${i}_new.hmm;done
+cat *_new.hmm >> database.hmm
+hmmpress database.hmm
+
+#all this works well in linux but not macOS
+
+```
+
 ```
 [liupf@zenith ORG-Data]$ cd /opt/gtdbtk/data/
 cd release89
