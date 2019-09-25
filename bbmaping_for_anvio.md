@@ -641,3 +641,26 @@ anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_colle
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary 
 PLANT_2015_08_Metabat_30.Anvio
 ```
+#checkM
+```
+cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/Methanogens_bins_refine_anvio/Refine_list_fa
+
+screen -S chekcM
+/home/projects/Wetlands/2018_sampling/scripts/run_checkm.sh Refine_list_fa fa ./ ./Refine_list_fa_checkM
+
+#gtdbtk
+/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk.sh Refine_list_fa
+
+Using GTDB-Tk reference data version r89: /opt/gtdbtk/data/release89/
+
+#merge
+python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py Refine_list_fa_checkm_summary.txt gtdbtk_out/Refine_list_fa.bac120.summary.tsv gtdbtk_out/Refine_list_fa.ar122.summary.tsv >Refine_list_fa_checkm_gtdbtk_summary.txt
+```
+
+#four genomes needs to refine again 
+```
+Aug_M1C1D1_idbak60_metabat_Anvio.117
+May_M1_C1_D1_megahit_metabat_Anvio.122
+O3C3D3_DDIG_MN_Anvio.808.Anvio
+```
+PLANT_2015_08_Metabat_30.Anvio
