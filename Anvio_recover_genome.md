@@ -405,10 +405,248 @@ anvi-refine Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collecti
 ```
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
 
-cd Aug_M1C1D1_idbak60_metabat_bin.117_bbmap_out
+cd xxxx_bbmap_out
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary 
 
 xx.117
+```
+```
+cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/Methangoens_db_Cp50Ctl25_Anvio
+
+sed -e 's/_bbmap_out//1' bbmap_file.list >bbmap_file_prefix.list
+
+for file in $(cat bbmap_file_prefix.list)
+do
+sed -e "s/xxxx/$file/1" temp.txt > ${file}_anvio.txt
+done
+```
+```
+Aug_M1C1D1_metaHit_metabat_bin.35_bbmap_out
+Aug_M1C1D5_idba_k60_maxbin2.205_bbmap_out
+Aug_M1C1D5_metaHit_metabat_bin.139_bbmap_out
+M3C4D3_v1_idba.66_bbmap_out
+M3C4D4_idba_metabatSS.16_bbmap_out
+MUD_2014_11_ESOM_35_bbmap_out
+MUD_2014_11_ESOM_36_bbmap_out
+MUD_2014_2015_coassembly_Metabat_121_bbmap_out
+O3C3D3_DDIG_MN.1182_bbmap_out
+O3C3D3_DDIG_MN.366_bbmap_out
+O3C3D3_idba.19_bbmap_out
+O3C3D3_idba.85_bbmap_out
+O3C3D4_DDIG_metabat.1018_bbmap_out
+O3C3D4_idba_metabatSS.126_bbmap_out
+O3C3D4_idba_metabatSS.154_bbmap_out
+O3C3D4_idba_metabatSS.88_bbmap_out
+O3D3D3_DDIG_megahit.237_bbmap_out
+O3D3D3_DDIG_megahit.559_bbmap_out
+OWC_Enrichment_Methanothrix_Bin5_bbmap_out
+OWC_MG_enrich2015_idba_metabat.10_bbmap_out
+OWC_MG_enrich2015_idba_metabat.42_bbmap_out
+OWC_subtractive_megahit_Surface_metabat.462_bbmap_out
+OWC_subtractive_megahit_Surface_metabat.701_bbmap_out
+OWC_subtractive_megahit_Surface_metabat.897_bbmap_out
+OWC_subtractive_megahit_Surface_metabat.953_bbmap_out
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd Aug_M1C1D1_metaHit_metabat_bin.35_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd Aug_M1C1D5_idba_k60_maxbin2.205_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd Aug_M1C1D5_metaHit_metabat_bin.139_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd M3C4D3_v1_idba.66_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd M3C4D4_idba_metabatSS.16_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd MUD_2014_11_ESOM_35_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd MUD_2014_11_ESOM_36_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd MUD_2014_2015_coassembly_Metabat_121_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3C3D3_DDIG_MN.1182_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3C3D3_DDIG_MN.366_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3C3D3_idba.19_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3C3D3_idba.85_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3C3D4_DDIG_metabat.1018_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3C3D4_idba_metabatSS.126_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3C3D4_idba_metabatSS.154_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3C3D4_idba_metabatSS.88_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3D3D3_DDIG_megahit.237_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd O3D3D3_DDIG_megahit.559_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd OWC_Enrichment_Methanothrix_Bin5_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd OWC_MG_enrich2015_idba_metabat.10_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd OWC_MG_enrich2015_idba_metabat.42_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd OWC_subtractive_megahit_Surface_metabat.462_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd OWC_subtractive_megahit_Surface_metabat.701_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd OWC_subtractive_megahit_Surface_metabat.897_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+```
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd OWC_subtractive_megahit_Surface_metabat.953_bbmap_out
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
 ```
