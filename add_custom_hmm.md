@@ -28,3 +28,14 @@ done
 
 
 ```
+
+```
+#If you have already run this once, and now would like to add an HMM profile of your own, that is easy. You can use --hmm-profile-dir parameter to declare where should anvi’o look for it. 
+#for Bacteria
+anvi-run-hmms -c contigs.db --hmm-profile-dir /Users/pengfeiliu/anvio_dataset/gtdbtk_marker/Bac_120_marker
+
+#for Archaea
+anvi-run-hmms -c contigs.db --hmm-profile-dir /Users/pengfeiliu/anvio_dataset/gtdbtk_marker/Arc_122_marker
+
+#how to use this info for refine bins
+```
