@@ -39,3 +39,9 @@ anvi-run-hmms -c contigs.db --hmm-profile-dir /Users/pengfeiliu/anvio_dataset/gt
 
 #how to use this info for refine bins
 ```
+
+You can use anvi-export-collection to export collection information and import into other profiles. It becomes very handy when you are doing benchmarking between different approaches.
+
+You can use anvi-show-collections-and-bins to see all available collections and bins in an anvi’o profile or pan database.
+
+You can use anvi-script-get-collection-info to see completion and redundancy estimates for all bins in a given anvi’o collection.
