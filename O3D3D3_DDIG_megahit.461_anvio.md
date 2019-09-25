@@ -100,15 +100,16 @@ anvi-summarize -p O3D3D3_DDIG_megahit_461_merged/PROFILE.db -c contigs.db -C O3D
 
 
 ```
-# cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/Methanogens_bins_refine_anvio
+cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/Methanogens_bins_refine_anvio/Refine_list_fa
 
-
-/home/projects/Wetlands/2018_sampling/scripts/run_checkm_t2.sh O3D3D3_DDIG_megahit_461 fa ./ ./O3D3D3_DDIG_megahit_461_anvioRefine
+screen -S chekcM
+/home/projects/Wetlands/2018_sampling/scripts/run_checkm.sh Refine_list_fa fa ./ ./Refine_list_fa_checkM
 
 #gtdbtk
-/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk_t2.sh O3D3D3_DDIG_megahit_461
+/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk.sh Refine_list_fa
+
 Using GTDB-Tk reference data version r89: /opt/gtdbtk/data/release89/
 
 #merge
-python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py ${prefix}_megahit_metabat_checkm_summary.txt gtdbtk_out/${prefix}_megahit_metabat.bac120.summary.tsv gtdbtk_out/${prefix}_megahit_metabat.ar122.summary.tsv >${prefix}_megahit_metabat_checkm_gtdbtk_summary.txt
+python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py Refine_list_fa_checkm_summary.txt gtdbtk_out/Refine_list_fa.bac120.summary.tsv gtdbtk_out/Refine_list_fa.ar122.summary.tsv >Refine_list_fa_checkm_gtdbtk_summary.txt
 ```
