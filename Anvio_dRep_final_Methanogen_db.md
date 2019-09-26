@@ -86,6 +86,7 @@ O3C3D3_DDIG_MN.1150 d__Archaea;p__Halobacterota;c__Bog-38;o__Bog-38;f__Bog-38;g_
 # partial mtrH, 
 
 # Keep all for relative abundance calculation and tree
+we have 88 putative methanogens genoems left 
 ```
 
 
