@@ -688,5 +688,5 @@ Using GTDB-Tk reference data version r89: /opt/gtdbtk/data/release89/
 #merge
 python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py Refine_list_fa_checkm_summary.txt gtdbtk_out/Refine_list_fa.bac120.summary.tsv gtdbtk_out/Refine_list_fa.ar122.summary.tsv >Refine_list_fa_checkm_gtdbtk_summary.txt
 
-
+mv Refine_list_fa_checkm_gtdbtk_summary.txt Refine_C50Ctl25_checkm_gtdbtk_summary.txt
 ```
