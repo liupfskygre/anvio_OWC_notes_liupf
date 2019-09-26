@@ -660,7 +660,49 @@ python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py
 #four genomes needs to refine again 
 ```
 Aug_M1C1D1_idbak60_metabat_Anvio.117
-May_M1_C1_D1_megahit_metabat_Anvio.122
-O3C3D3_DDIG_MN_Anvio.808.Anvio
+
+#Aug_M1C1D1_idbak60_metabat_bin.117_bbmap_out
+
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+cd Aug_M1C1D1_idbak60_metabat_bin.117_bbmap_out
+anvi-import-collection -C Meta_collection -p Methanogens_merged_profile/PROFILE.db -c contigs.db seq_header.txt --contigs-mode
+
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C MAGs_from_megahit -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary2 
+
+Aug_M1C1D1_idbak60_metabat_Anvio2.117
+
+#
+
+cd May_M1_C1_D1_megahit_metabat.122_bbmap_out
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
+
+
+anvi-import-collection -C Meta_collection -p Methanogens_merged_profile/PROFILE.db -c contigs.db seq_header.txt --contigs-mode
+
+anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
+#remove to 0 contamination
+anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary2 
+cd May_M1_C1_D1_megahit_metabat_Anvio.122
+
+#
+cd O3C3D3_DDIG_MN.808_bbmap_out . ##too low confidence
+
+#
+#PLANT_2015_08_Metabat_30.Anvio too low completeness
+
+screen -r chekcM
+/home/projects/Wetlands/2018_sampling/scripts/run_checkm.sh Refine_list_fa fa ./ ./Refine_list_fa_checkM
+
+#gtdbtk
+/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk.sh Refine_list_fa
+
+Using GTDB-Tk reference data version r89: /opt/gtdbtk/data/release89/
+
+#merge
+python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py Refine_list_fa_checkm_summary.txt gtdbtk_out/Refine_list_fa.bac120.summary.tsv gtdbtk_out/Refine_list_fa.ar122.summary.tsv >Refine_list_fa2_checkm_gtdbtk_summary.txt
 ```
-PLANT_2015_08_Metabat_30.Anvio
+
+```
