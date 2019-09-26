@@ -1,4 +1,6 @@
-# after Anvio clean of dRep geneomes and recover genome with CP>50% and Ctl>25%, do dRep on these genomes with de-Replicated and cleaned genomes again
+## after Anvio clean of dRep geneomes and recover genome with CP>50% and Ctl>25%, 
+
+## do dRep on these genomes with de-Replicated and cleaned genomes again
 
 # 
 ```
@@ -54,13 +56,31 @@ dRep dereplicate -p 6 -comp 50 -con 25 --genomeInfo ./OWC_methanogens_MAGs_check
 
 #get the checkM and gtdbtk
 cd /home/projects/Wetlands/2018_sampling/Methanog_targeted_coassembly/Methanogens_final_dRep_clean_db/Methanogens_cleanDB_26Spet2019_dRep/dereplicated_genomes
-#/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk.sh Methanogens_cleanDB_26Spet2019_dRep
+
+
+
+/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk.sh Methanogens_cleanDB_26Spet2019_dRep
+
+/home/projects/Wetlands/2018_sampling/scripts/run_checkm.sh Methanogens_cleanDB_26Spet2019_dRep fa ./ ./Methanogens_cleanDB_26Spet2019_dRep_checkM
+
+#merge
+python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py Refine_list_fa_checkm_summary.txt gtdbtk_out/Refine_list_fa.bac120.summary.tsv gtdbtk_out/Refine_list_fa.ar122.summary.tsv >Refine_list_fa2_checkm_gtdbtk_summary.txt
 
 #use old ones
 sed -i -e 's/\.fa//1' dRep_genome90.list
 grep -w -f dRep_genome90.list OWC_methanogens_MAGs_checkM_gtdbtk_Anvio.txt > Methanogens_cleanDB_26Spet2019_dRep_checkM_gtdbtk_old.txt
 
 ```
+
+```
+remove following based on GTDBtk tax
+M3C4D4_idba_metabatSS_Anvio.16_1; 
+O3C3D3_DDIG_MN_Anvio.967.??
+O3D3_metabatSS.Anvio.87??
+May_M1_C1_D3_megahit_metabat.45??
+
+```
+
 
 #clean server,
 #clean my MacOS
