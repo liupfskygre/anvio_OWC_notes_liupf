@@ -678,7 +678,7 @@ anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_co
 
 ```
 screen -r chekcM
-/home/projects/Wetlands/2018_sampling/scripts/run_checkm.sh Refine_list_fa fa ./ ./Refine_list_fa
+/home/projects/Wetlands/2018_sampling/scripts/run_checkm.sh Refine_list_fa fa ./ ./Refine_list_fa_checkM
 
 #gtdbtk
 /home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk.sh Refine_list_fa
