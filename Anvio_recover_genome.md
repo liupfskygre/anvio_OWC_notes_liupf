@@ -606,69 +606,87 @@ anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_colle
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
 ```
 
+cd O3D3D3_DDIG_megahit.559_bbmap_out
 
->>>
 ```
-anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
-
 cd O3D3D3_DDIG_megahit.559_bbmap_out
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
 ```
-```
-anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
 
+cd OWC_Enrichment_Methanothrix_Bin5_bbmap_out
+```
 cd OWC_Enrichment_Methanothrix_Bin5_bbmap_out
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
 ```
-```
-anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
 
+cd OWC_MG_enrich2015_idba_metabat.10_bbmap_out
+
+```
 cd OWC_MG_enrich2015_idba_metabat.10_bbmap_out
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
-```
-```
-anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
 
+```
+
+cd OWC_MG_enrich2015_idba_metabat.42_bbmap_out
+
+```
 cd OWC_MG_enrich2015_idba_metabat.42_bbmap_out
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
 ```
-```
-anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
 
 cd OWC_subtractive_megahit_Surface_metabat.462_bbmap_out
+```
+
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
 ```
-```
-anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
 
+cd OWC_subtractive_megahit_Surface_metabat.701_bbmap_out
+
+```
 cd OWC_subtractive_megahit_Surface_metabat.701_bbmap_out
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
 ```
-```
-anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
 
+cd OWC_subtractive_megahit_Surface_metabat.897_bbmap_out
+```
 cd OWC_subtractive_megahit_Surface_metabat.897_bbmap_out
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
 ```
+
+#
 ```
-anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o Before_Refine_summary
 
 cd OWC_subtractive_megahit_Surface_metabat.953_bbmap_out
 anvi-refine -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -b MAGs_from_megahit
 #remove to 0 contamination
 anvi-summarize -p Methanogens_merged_profile/PROFILE.db -c contigs.db -C Meta_collection -o After_refined_summary
+```
+
+```
+screen -r chekcM
+/home/projects/Wetlands/2018_sampling/scripts/run_checkm.sh Refine_list_fa fa ./ ./Refine_list_fa
+
+#gtdbtk
+/home/projects/Wetlands/2018_sampling/scripts/run_gtdbtk.sh Refine_list_fa
+
+Using GTDB-Tk reference data version r89: /opt/gtdbtk/data/release89/
+
+#merge
+python /home/projects/Wetlands/2018_sampling/scripts/add_gtdbtk_tax_to_checkm.py Refine_list_fa_checkm_summary.txt gtdbtk_out/Refine_list_fa.bac120.summary.tsv gtdbtk_out/Refine_list_fa.ar122.summary.tsv >Refine_list_fa_checkm_gtdbtk_summary.txt
+
+
 ```
