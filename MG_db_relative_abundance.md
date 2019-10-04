@@ -23,6 +23,13 @@ cat *_rename.fasta >OWC_methanogens_DB88_cat.fa
 #transfer data to summit for mapping
 ```
 
+#add O3C3D3_DDIG_MN_Anvio.967.fa
+```
+
+
+```
+
+
 ## mapping metaG 16 to methanogens db on summit
 ```
 #sickle on metaG reads
